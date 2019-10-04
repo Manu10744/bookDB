@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Books - Book Database</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./assets/css/all.min.css">
+    <link href="./assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <%- include partials/header.ejs %>
+
+    <div class="container">
+        <h1 class="heading">Already published books:</h1>
+
+        <% data.forEach((book) => { %>
+            <div class="book-widget">
+                <h1 class="title"> <%- book.title %> </h1>
+                <hr>
+                <h4>Author: <%- book.author %> </h4>
+                <h4>Publisher: <%- book.publisher %></h4>
+                <h4>Release: <%- book.releaseYear %></h4>
+                <h4>Pages: <%- book.pages %> S.</h4>
+                <a href="/books/<%- book._id %>" class="book-option">
+                    <i class="fas fa-chevron-right"></i>More</a>
+                <a href="/edit/<%- book._id %>" class="book-option">Edit</a>
+                <%- book.cover %>
+                <form class="delete-form" action="/book/<%- book._id %>?_method=DELETE" method="POST">
+                    <button class="book-option delete-btn" type="submit">Delete</button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+
+    <script src="./assets/js/all.min.js"></script>
+</body>

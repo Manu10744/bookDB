@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit - Book Database</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <%- include partials/header.ejs %>
+
+    <div class="container">
+        <div class="book-edit">
+            <h1>Edit "<%- data.title %>"</h1>
+            <p>from <%- data.author %></p>
+            <form action="/book/<%- data._id %>" method="POST">
+                <label>Title</label>
+                <input type="text" placeholder="Title of the book..." name="title" value="<%- data.title %>">
+                <label>Author</label>
+                <input type="text" placeholder="Author of the book" name="author" value="<%- data.author %>">
+                <label>Cover</label>
+                <input type="file">
+                <label>Publisher</label>
+                <input type="text" value="<%- data.publisher %>" placeholder="Publisher..." name="publisher" required>
+                <div class="date-input">
+                    <label>Release</label>
+                    <input type="text" value="<%- data.releaseYear %>" placeholder="----" name="releaseYear" required>
+                </div>
+                <div class="pages-input">
+                    <label>Pages</label>
+                    <input type="text" value="<%- data.pages %>" placeholder="Pages..." name="pages">
+                </div>
+                <button class="main-btn" type="submit">Edit</button>
+            </form>
+        </div>
+    </div>
+</body>

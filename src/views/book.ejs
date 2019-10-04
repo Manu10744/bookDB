@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book Database - <%- data.title %></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../assets/css/all.min.css" rel="stylesheet">
+        <link href="../assets/css/main.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <%- include partials/header.ejs %>
+        <div class="container">
+            <div class="book-wrapper">
+                <h1>"<%- data.title %>"</h1>
+                <p>from <%- data.author %></p>
+                <div class="book-description">
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+                        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
+                        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
+                        Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
+                        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.   
+                        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+                </div>
+
+                <hr class="seperator">
+
+                <div class="rating-wrapper">
+                    <h4>What is your opinion on <%- data.title %>?</h4>
+                    <p>You can leave a rating below.</p>
+                    <p>Average rating: <span class="avg-ratio"><%= calcAverageRatio(data) %></span><i class="fas fa-star"></i></p>
+                </div>
+
+                <div data-ratings="<%- data.rating.length %>" class="comments-wrapper">
+                    <% data.rating.forEach((comment) => { %>
+                        <div class="user-rating">
+                            <h4>From: <%- comment.author %></h4>
+                            <p class="rating">Rating: 
+                                <% for (let i = 0; i < comment.ratingValue; i++) { %>
+                                <i class="fas fa-star comment-star"></i>
+                                <%} %>
+                            </p>
+                            <p><%- comment.comment %></p>
+                            <p class="comment-time"><%- comment.posted.toLocaleString() %></p>
+                            <a>Answer</a>
+                        </div>
+                    <% }) %>
+                </div>
+
+                <div class="stars-wrapper">
+                    <i class="far fa-star" value="1"></i>
+                    <i class="far fa-star" value="2"></i>
+                    <i class="far fa-star" value="3"></i>
+                    <i class="far fa-star" value="4"></i>
+                    <i class="far fa-star" value="5"></i>
+                </div>
+
+                <form action="/book/<%- data._id %>/comments/post" method="POST" class="rating-form">
+                    <label>Author</label>
+                    <input class="author-input" type="text" name="author" placeholder="Your Name...">
+                    <textarea class="rating-box" name="content" placeholder="What are your thoughts?"></textarea>
+                    <button type="submit" class="rating-btn">Rate</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- <script src="../assets/js/all.min.js"></script> -->
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+        </script>
+
+        <script>
+        $(".rating-form").submit((e) => {
+            console.log("AJAX REQUEST SENDING...");
+            e.preventDefault();
+
+            let ratingStars = $(".stars-wrapper .fa-star");
+            let ratingForm = $(".rating-form");
+            let ratingValue = $(".active-rating").attr("value");
+            let formData = {
+                "author": $(".author-input").val(),
+                "comment": $(".rating-box").val(),
+                "ratingValue": ratingValue
+            }
+
+            $.ajax({
+                url: "/book/<%- data._id%>/comments/post",
+                method: "POST",
+                data: formData,
+                xhrFields: {
+                    withCredentials: false
+                }, 
+                headers: {
+
+                }, 
+                success: (newComment) => {
+                    console.log("AJAX RESPONSE CONFIRMED.");
+                    let date = new Date(newComment.posted).toLocaleString();
+                    
+                    $(".comments-wrapper").append(
+                        `<div class="user-rating">
+                            <h4>${newComment.author}</h4>
+                            <p class="rating">Rating:</p>
+                            <p>${newComment.comment}</p>
+                            <p class="comment-time">${date}</p>
+                        </div>`
+                    );
+                    
+                    // Update the average rating
+                    let amountOfRatings = parseFloat($(".comments-wrapper").attr("data-ratings"));
+                    let oldAvg = $(".avg-ratio").text();
+
+                    let newAvg = (((oldAvg * amountOfRatings) + newComment.ratingValue) / (amountOfRatings + 1)).toFixed(2);
+                    $(".avg-ratio").html(
+                        newAvg.toString()
+                    );
+
+                    // Clear inputs
+                    for (let i = 0; i < ratingValue; i++) {
+                        ratingStars[i].classList.remove("fas");
+                        ratingStars[i].classList.add("far");
+                    }
+
+                    $(".author-input").val('');
+                    $(".rating-box").val('');
+                }
+            })
+            return false;
+        });
+        </script>
+
+        <script>
+            let stars = document.querySelectorAll(".stars-wrapper .fa-star");
+
+            for (let i = 0; i < stars.length; i++) {
+                stars[i].addEventListener("click", () => {
+                    let ratingValue = stars[i].getAttribute("value");
+                    
+                    for (let i = 0; i < ratingValue; i++) {
+                        for (let i = 0; i < ratingValue; i++) {
+                            stars[i].classList.remove("active-rating");
+                        }
+
+                        // Fill the stars at click event
+                        stars[i].classList.remove("far");
+                        stars[i].classList.add("fas");
+
+                        for (let i = ratingValue; i < stars.length; i++) {
+                            // Reset stars from earlier clicks
+                            stars[i].classList.remove("fas");
+                            stars[i].classList.add("far");
+                        }
+                    }
+
+                    // Mark the star that was rated for getting the value later
+                    stars[i].classList.add("active-rating");
+                });
+            }
+        </script>
+
+        <script src="../assets/js/answerRating.js"></script>
+    </body>
+</html>

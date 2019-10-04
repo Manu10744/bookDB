@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Raleway;
+}
+
+body {
+    background: #eee;
+}
+
+a { text-decoration: none; }
+.nav {
+    background-color: rgb(64, 120, 22);
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.logo a {
+    color: #000;
+}
+
+.db {
+    color: #ddd;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #eee;
+}
+
+ul li {
+    padding: 0 15px;
+    list-style: none;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s all;
+}
+
+ul li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.container {
+    width: 80%;
+    margin: 5% auto;
+}
+
+.book-upload h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+input {
+    display: block;
+    width: 100%;
+    position: relative;
+    height: 25px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    transition: 0.5s all;
+}
+
+input:focus {
+    border: 2px solid rgb(64, 120, 22);
+    height: 30px;
+}
+
+label {
+    padding-left: 5px;
+    font-size: 14px;
+}
+
+input {
+    font-weight: bold;
+}
+
+.book-upload {
+    width: 30%;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.main-btn {
+    padding: 5px;
+    background-color: rgb(64, 120, 22);
+    color: white;
+    border-radius: 20px;
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.4s all;
+}
+
+.book-info {
+    width: 80%;
+    text-align: center;
+    margin: 30px auto;
+}
+
+.book-info a {
+    color: #000;
+    text-decoration: underline;
+}
+
+.book-widget {
+    width: 33%;
+    background-color: #f6f6f6;
+    -webkit-box-shadow: 0px -2px 39px -26px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -2px 39px -26px rgba(0,0,0,0.75);
+    box-shadow: 0px -2px 39px -26px rgba(0,0,0,0.75);
+    padding: 50px;
+    display: inline-block;
+    margin: 0.3% 0.1%;
+}
+
+.book-widget h1, .book-widget h4 {
+    margin: 10px 0;
+}
+
+.book-widget h4 {
+    font-weight: lighter;
+}
+
+.book-widget hr {
+    width: 60%;
+}
+
+.heading {
+    margin-bottom: 50px;
+    text-decoration: underline;
+}
+
+.book-option {
+    padding: 6px 12px; 
+    border: 1px solid #000;
+    font-size: 14px;
+    color: #000;
+    background: #f6f6f6;
+    cursor: pointer;
+    transition: 0.4s all;
+}
+
+.book-option:hover {
+    background: #000;
+    color: #f6f6f6;
+}
+
+.book-edit {
+    width: 50%;
+    margin: 0 auto;
+    background: #f6f6f6;
+    padding: 50px;
+}
+
+.book-edit p, .book-edit h1 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.delete-form { display: inline-block; }
+
+.book-wrapper {
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 50px;
+    background: #f6f6f6;
+}
+
+.book-description {
+    margin: 20px;
+}
+
+.rating-wrapper h1, .rating-wrapper p {
+    margin: 10px 0;
+}
+
+.seperator {
+    width: 60%;
+    margin: 30px auto;
+}
+
+.fa-star {
+    font-size: 30px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.rating-box {
+    width: 80%;
+    height: 150px;
+    border-radius: 5px;
+    background: #eee;
+    outline: none;
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    resize: none;
+}
+
+.author-input {
+    width: 80%;
+    margin: 10px auto;
+}
+
+.rating-btn {
+    padding: 5px 50px;
+    background: rgb(64, 120, 22);
+    outline: none;
+    color: #f6f6f6;
+    border-radius: 10px;
+    border: none;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.4s all;
+}
+
+.user-rating {
+    width: 80%;
+    margin: 20px auto;
+    background: #eee;
+    border-radius: 10px;
+    text-align: left;
+    padding: 20px;
+}
+
+.comment-star {
+    cursor: default;
+    font-size: 14px;
+}
+
+.comment-time {
+    margin: 20px 0 0 0;
+    font-size: 10px;
+    font-family: Arial;
+}
+
+.fa-chevron-right {
+    margin-right: 5px;
+}
+
+.delete-btn {
+    background: #a83232;
+    color: #f6f6f6;
+}
+
+.delete-btn:hover {
+    background: #e81313;
+}
+
+.comment-star, .rating-wrapper .fa-star { color: orange; }
+.rating-wrapper .fa-star {
+    font-size: 16px;
+    margin-left: 3px;
+}
+
+.avg-ratio { font-weight: bold; }
+
+.user-rating a {
+    color: #000;
+    text-decoration: none;
+    font-size: 12px;
+    margin: 5px 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.answer-box textarea {
+    height: 80px;
+    border-radius: 5px;
+    background: #ddd;
+    width: 100%;
+    margin-top: 5px;
+    resize: none;
+    outline: none;
+    padding: 5px;
+}
+
+.answer-box button {
+    padding: 5px 20px;
+    background: rgb(64, 120, 22);
+    outline: none;
+    color: #f6f6f6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main-btn:hover, .rating-btn:hover {
+    background: #32a852;
+}
+
+.date-input {
+    width: 25%;
+    display: inline-block;
+}
+
+.pages-input {
+    width: 25%;
+    display: inline-block;
+}
