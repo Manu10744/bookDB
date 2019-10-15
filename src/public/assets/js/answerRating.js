@@ -6,8 +6,13 @@ answerButtons.on("click", (event) => {
 
     if (!ratingBox.hasClass("expanded")) {
         $(ratingBox).append(
-            "<div class='answer-box'><textarea></textarea>"
-             + "<button>Post</button></div>"
+            "<div class='answer-box'>"
+            + "<form class='answer-form'>"
+            + "<input class='answer-input' type='text' name='author' placeholder='Your Name...'>"
+            + "<textarea></textarea>"
+            + "<button type='submit'>Post</button>"
+            + "</form>"
+            + "</div>"
         );
 
         ratingBox.addClass("expanded");

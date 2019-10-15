@@ -82,6 +82,10 @@ app.post("/book/:id/comments/post", (req, res) => {
     });
 });
 
+app.post("/book/:id/comments/answer", (req: Request, res: Response) => {
+
+})
+
 app.set("port", 3000);
 app.listen(app.get("port"), (err: any) => {
     if (err) {

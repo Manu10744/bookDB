@@ -19,10 +19,10 @@
             <div class="book-widget">
                 <h1 class="title"> <%- book.title %> </h1>
                 <hr>
-                <h4>Author: <%- book.author %> </h4>
-                <h4>Publisher: <%- book.publisher %></h4>
-                <h4>Release: <%- book.releaseYear %></h4>
-                <h4>Pages: <%- book.pages %> S.</h4>
+                <h4><span class="book-info">Author: </span><%- book.author %></h4>
+                <h4><span class="book-info">Publisher: </span><%- book.publisher %></h4>
+                <h4><span class="book-info">Release: </span><%- book.releaseYear %></h4>
+                <h4><span class="book-info">Pages: </span><%- book.pages %> S.</h4>
                 <a href="/books/<%- book._id %>" class="book-option">
                     <i class="fas fa-chevron-right"></i>More</a>
                 <a href="/edit/<%- book._id %>" class="book-option">Edit</a>
@@ -32,7 +32,16 @@
                 </form>
             </div>
         <% }) %>
+
+        <div class="modal">
+            <div class="modal-content">
+                <h4>Do you really want to delete this book?</h4>
+                <button class="main-btn delete-confirm">Yes</button>
+                <button class="main-btn delete-abort">No</button>
+            </div>
+        </div>
     </div>
 
-    <script src="./assets/js/all.min.js"></script>
+    <script src="./assets/js/fontawesome.min.js"></script>
+    <script src="./assets/js/modal.js"></script>
 </body>

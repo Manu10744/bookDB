@@ -328,3 +328,55 @@ input {
     width: 25%;
     display: inline-block;
 }
+
+.book-info { font-weight: bold; }
+
+.answer-input {
+    margin: 5px 0 0 0; 
+    width: 25%;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0, 0.5);
+    z-index: 1;
+    display: none;
+}
+
+.modal-content {
+    text-align: center;
+    background: #f6f6f6;
+    height: 200px;
+    width: 400px;
+    margin: 10% auto;
+    padding: 60px 30px;
+    border-radius: 5px;
+    animation-name: modalopen;
+    animation-duration: 1s;
+}
+
+.modal-content h4 {
+    margin: 5px;
+}
+
+.modal-content .main-btn {
+    width: 30%;
+    margin: 5px;
+}
+
+.delete-abort {
+    background-color: #e81313;
+}
+
+.delete-abort:hover {
+    background: red;
+}
+
+@keyframes modalopen {
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
