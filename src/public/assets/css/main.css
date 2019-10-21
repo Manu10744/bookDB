@@ -65,7 +65,9 @@ ul li:hover {
 
 .container {
     width: 80%;
-    margin: 5% auto;
+    margin: 150px auto;
+    min-height: 100vh;
+    position: relative;
 }
 
 .book-upload h1 {
@@ -133,13 +135,14 @@ input {
 
 .book-widget {
     width: 33%;
+    height: 400px;
     background-color: #f6f6f6;
     -webkit-box-shadow: 0px -2px 39px -26px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px -2px 39px -26px rgba(0,0,0,0.75);
     box-shadow: 0px -2px 39px -26px rgba(0,0,0,0.75);
     padding: 50px;
-    display: inline-block;
     margin: 0.3% 0.1%;
+    float: left; 
 }
 
 .book-widget h1, .book-widget h4 {
@@ -376,7 +379,98 @@ input {
     background: red;
 }
 
+footer {
+    width: 100%;
+    background: rgb(64, 120, 22);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 30px;
+}
+
+
+.footer-container {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.footer-container p {
+    color: #f6f6f6;
+    text-align: center;
+    font-family: Arial;
+}
+
+.mobile-nav div {
+    width: 25px;
+    height: 2px;
+    background: #f6f6f6;
+    margin: 5px 0;
+}
+
+.mobile-nav {
+    position: absolute;
+    top: 22px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.mobile-nav div { transition: transform 0.3s ease-in-out; }
+
+.mobile-toggle .bar1 { transform: rotate(45deg) translateX(5px) translateY(5px); }
+.mobile-toggle .bar2 { display: none; }
+.mobile-toggle .bar3 { transform: rotate(-45deg)  }
+
 @keyframes modalopen {
     from { opacity: 0 }
     to { opacity: 1 }
+}
+
+@media only screen and (max-width: 599px) {
+    .book-upload { width: 100%; }
+    .book-upload h1 { font-size: 20px; }
+    .date-input { display: block; }
+    .date-input { width: 100%; }
+    .pages-input { width: 100%; }
+    .book-info h4 { font-size: 14px; }
+
+    .book-widget { width: 100%; margin: 10px; }
+
+    .nav { position: relative;}
+    ul { 
+        position: absolute;
+        top: 70px;
+        background: rgb(64, 120, 22);
+        z-index: 1;
+        width: 100%;
+        display: none;
+    }
+
+    ul li {
+        height: 50px;
+    }
+}
+
+@media only screen and (min-width: 600px ) {
+    .book-upload { width: 80%; }
+    .book-upload h1 { font-size: 22px; }
+    .book-upload h4 { font-size: 16px; }
+    .book-widget { width: 100%; margin: 10px; }
+    .book-info h4 { font-size: 16px; }
+
+    .mobile-nav { display: none; }
+}
+
+@media only screen and (min-width: 980px ) {
+    .book-upload { width: 60%; }
+    .book-widget { width: 45%; margin: 10px; }
+}
+
+@media only screen and (min-width: 1260px ) {
+    .book-upload { width: 50%; }
+    .book-widget { width: 30%; }
+}
+
+@media only screen and (min-width: 1860px ) {
+    .book-upload { width: 30%; }
+    .book-widget { width: 32%; }
 }

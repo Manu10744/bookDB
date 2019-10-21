@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run html && nodemon dist/app.js",
-    "html": "copyfiles -u 1 src/views/*.ejs dist && copyfiles -u 1 src/public/assets/** dist/"
+    "html": "copyfiles -u 1 src/views/** dist && copyfiles -u 1 src/public/assets/** dist/"
   },
   "author": "",
   "license": "ISC",

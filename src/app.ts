@@ -21,6 +21,8 @@ app.use(express.static(__dirname + "/public"));
 // MethodOverride
 app.use(methodOverride("_method"));
 
+
+
 // Helper functions
 app.locals = {
     calcAverageRatio: (book: any): String => {
@@ -33,8 +35,6 @@ app.locals = {
     }
 };
 
-app.set("views", __dirname + "/views");
-
 app.get("/", (req: Request, res: Response) => {
     res.render("index.ejs");
 });
@@ -42,7 +42,7 @@ app.get("/", (req: Request, res: Response) => {
 app.get("/books/:id", (req: Request, res: Response) => {
     Book.findById(req.params.id).exec((err, book) => {
         if (err) throw err;
-        res.render("book.ejs", { data: book});
+        res.render("book.ejs", { data: book });
     });
 });
 
