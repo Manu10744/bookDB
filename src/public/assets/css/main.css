@@ -9,6 +9,7 @@
 
 body {
     background: #eee;
+    height: 100%;
 }
 
 a { text-decoration: none; }
@@ -65,8 +66,8 @@ ul li:hover {
 
 .container {
     width: 80%;
-    margin: 150px auto;
     min-height: 100vh;
+    margin: 150px auto;
     position: relative;
 }
 
@@ -382,9 +383,6 @@ input {
 footer {
     width: 100%;
     background: rgb(64, 120, 22);
-    position: absolute;
-    left: 0;
-    bottom: 0;
     padding: 30px;
 }
 
@@ -426,14 +424,15 @@ footer {
 }
 
 @media only screen and (max-width: 599px) {
-    .book-upload { width: 100%; }
+    .book-upload { width: 100%; padding: 25px; }
     .book-upload h1 { font-size: 20px; }
+    .book-edit { width: 90%; padding: 25px; }
     .date-input { display: block; }
     .date-input { width: 100%; }
     .pages-input { width: 100%; }
     .book-info h4 { font-size: 14px; }
 
-    .book-widget { width: 100%; margin: 10px; }
+    .book-widget { width: 100%; margin: 10px; float: none; }
 
     .nav { position: relative;}
     ul { 
@@ -448,6 +447,13 @@ footer {
     ul li {
         height: 50px;
     }
+
+    .container { width: 90%; }
+    .book-wrapper { 
+        width: 100%; 
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 @media only screen and (min-width: 600px ) {
@@ -458,11 +464,12 @@ footer {
     .book-info h4 { font-size: 16px; }
 
     .mobile-nav { display: none; }
+    .book-widget { float: none; }
 }
 
 @media only screen and (min-width: 980px ) {
     .book-upload { width: 60%; }
-    .book-widget { width: 45%; margin: 10px; }
+    .book-widget { width: 45%; margin: 10px; float: left; }
 }
 
 @media only screen and (min-width: 1260px ) {
